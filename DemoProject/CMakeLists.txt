@@ -2,6 +2,10 @@
 # 项目特定的逻辑。
 #
 
+#set(CMAKE_TOOLCHAIN_FILE "E:/work/gitee/vcpkg/scripts/buildsystems/vcpkg.cmake")
+#find_package(openssl REQUIRED)  
+# 自动搜索 installed/x64-windows/share/openssl/
+
 # 将源代码添加到此项目的可执行文件。
 add_executable (DemoProject "DemoProject.cpp" "DemoProject.h")
 
