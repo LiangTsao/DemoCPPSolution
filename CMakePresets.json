@@ -1,5 +1,10 @@
 ﻿{
     "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 20,
+        "patch": 0
+      },
     "configurePresets": [
         {
             "name": "win-msvc",
@@ -9,7 +14,10 @@
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "cl.exe",
                 "CMAKE_CXX_COMPILER": "cl.exe",
-                "CMAKE_BUILD_TYPE": "Debug"
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_CUDA_COMPILER": "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.8/bin/nvcc.exe",
+                "CMAKE_CUDA_STANDARD": "17",
+                "CMAKE_CUDA_STANDARD_REQUIRED": "ON"
             },
             "architecture": {
                 "value": "x64",
@@ -30,7 +38,9 @@
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "gcc",
                 "CMAKE_CXX_COMPILER": "g++",
-                "CMAKE_BUILD_TYPE": "Debug"
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_CUDA_HOST_COMPILER": "g++",
+                "CMAKE_CUDA_FLAGS": "-Xcompiler=-Wall -G"
             },
             "architecture": {
                 "value": "x64",
@@ -63,5 +73,16 @@
                 "rhs": "Mac"
             }
         }
-    ]
+    ],
+
+    "buildPresets": [
+        {
+          "name": "win-msvc",
+          "configurePreset": "win-msvc"
+        },
+        {
+          "name": "linux-gcc",
+          "configurePreset": "linux-gcc"
+        }
+      ]
 }
