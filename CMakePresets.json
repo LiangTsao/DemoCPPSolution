@@ -14,10 +14,7 @@
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "cl.exe",
                 "CMAKE_CXX_COMPILER": "cl.exe",
-                "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_CUDA_COMPILER": "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.8/bin/nvcc.exe",
-                "CMAKE_CUDA_STANDARD": "17",
-                "CMAKE_CUDA_STANDARD_REQUIRED": "ON"
+                "CMAKE_BUILD_TYPE": "Debug"
             },
             "architecture": {
                 "value": "x64",
@@ -38,9 +35,7 @@
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "gcc",
                 "CMAKE_CXX_COMPILER": "g++",
-                "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_CUDA_HOST_COMPILER": "g++",
-                "CMAKE_CUDA_FLAGS": "-Xcompiler=-Wall -G"
+                "CMAKE_BUILD_TYPE": "Debug"
             },
             "architecture": {
                 "value": "x64",

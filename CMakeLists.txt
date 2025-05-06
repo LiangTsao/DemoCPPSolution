@@ -9,10 +9,10 @@ cmake_minimum_required (VERSION 3.20)
 #   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 # endif()
 
-project ("DemoSolution" LANGUAGES C CXX CUDA)
+project ("DemoSolution" LANGUAGES CXX)
 
 # 包含子项目。
 add_subdirectory ("DemoProject")
 add_subdirectory ("FooProject")
 add_subdirectory ("BarProject")
-add_subdirectory ("CUDAProject")
+#add_subdirectory ("CUDAProject")
