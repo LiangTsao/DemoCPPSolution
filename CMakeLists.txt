@@ -11,6 +11,10 @@ cmake_minimum_required (VERSION 3.20)
 
 project ("DemoSolution" LANGUAGES CXX)
 
+# 设置 C++ 标准
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # 包含子项目。
 add_subdirectory ("DemoProject")
 add_subdirectory ("FooProject")
