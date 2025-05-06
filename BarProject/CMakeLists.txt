@@ -7,10 +7,10 @@
 # 自动搜索 installed/x64-windows/share/openssl/
 
 # 将源代码添加到此项目的可执行文件。
-add_executable (demo "demo.cpp" "demo.h")
+add_executable (bar "bar.cpp" "bar.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET demo PROPERTY CXX_STANDARD 20)
+  set_property(TARGET bar PROPERTY CXX_STANDARD 20)
 endif()
 
 # TODO: 如有需要，请添加测试并安装目标。
