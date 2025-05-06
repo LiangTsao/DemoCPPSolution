@@ -7,8 +7,8 @@
       },
     "configurePresets": [
         {
-            "name": "CUDA",
-            "generator": "Ninja",
+            "name": "Win32",
+            "generator": "Visual Studio 17 2022",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "installDir": "${sourceDir}/out/install/${presetName}",
             "cacheVariables": {
@@ -28,7 +28,7 @@
         },
 
         {
-            "name": "GNU",
+            "name": "Linux",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "installDir": "${sourceDir}/out/install/${presetName}",
@@ -40,18 +40,23 @@
             "architecture": {
                 "value": "x64",
                 "strategy": "external"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
             }
         }
     ],
 
     "buildPresets": [
         {
-          "name": "CUDA-build",
-          "configurePreset": "CUDA"
+          "name": "Win32",
+          "configurePreset": "Win32"
         },
         {
-          "name": "GNU-build",
-          "configurePreset": "GNU"
+          "name": "Linux",
+          "configurePreset": "Linux"
         }
       ]
 }
