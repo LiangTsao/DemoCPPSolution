@@ -1,0 +1,8 @@
+{
+    "name": "my-solution",
+    "version": "0.1.0",
+    "dependencies": [
+      "asio",
+      "boost-algorithm"
+    ]
+  }
