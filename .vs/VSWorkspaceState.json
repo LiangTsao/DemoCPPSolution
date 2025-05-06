@@ -1,0 +1,13 @@
+{
+  "OutputFoldersPerTargetSystem": {
+    "Local Machine": [
+      "out\\build\\win-msvc",
+      "out\\install\\win-msvc"
+    ]
+  },
+  "ExpandedNodes": [
+    ""
+  ],
+  "SelectedNode": "\\CMakePresets.json",
+  "PreviewInSolutionExplorer": false
+}
