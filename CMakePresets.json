@@ -65,12 +65,6 @@
             "inheritConfigureEnvironment": true
         },
         {
-            "name": "mingw",
-            "configurePreset": "mingw",
-            "configuration": "Debug",
-            "inheritConfigureEnvironment": true
-        },
-        {
             "name": "linux",
             "configurePreset": "linux",
             "configuration": "Debug",
