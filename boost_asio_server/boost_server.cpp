@@ -2,6 +2,7 @@
 #include <memory>
 #include <string>
 #include <boost/asio.hpp>
+#include <iomanip>
 
 using boost::asio::ip::tcp;
 
@@ -16,25 +17,28 @@ public:
 private:
     void do_read() {
         auto self(shared_from_this());
+        std::cout << "[Session] Waiting to read data..." << std::endl;
         socket_.async_read_some(boost::asio::buffer(data_, max_length),
             [this, self](boost::system::error_code ec, std::size_t length) {
                 if (!ec) {
-                    std::cout << "Received: " << std::string(data_, length) << std::endl;
+                    std::cout << "[Session] Received data: " << std::string(data_, length) << " (" << length << " bytes)" << std::endl;
                     do_write(length);
                 } else {
-                    std::cerr << "Read error: " << ec.message() << std::endl;
+                    std::cerr << "[Session] Read error: " << ec.message() << std::endl;
                 }
             });
     }
 
     void do_write(std::size_t length) {
         auto self(shared_from_this());
+        std::cout << "[Session] Sending data back to client..." << std::endl;
         boost::asio::async_write(socket_, boost::asio::buffer(data_, length),
             [this, self](boost::system::error_code ec, std::size_t /*length*/) {
                 if (!ec) {
+                    std::cout << "[Session] Data sent successfully." << std::endl;
                     do_read();
                 } else {
-                    std::cerr << "Write error: " << ec.message() << std::endl;
+                    std::cerr << "[Session] Write error: " << ec.message() << std::endl;
                 }
             });
     }
@@ -53,13 +57,14 @@ public:
 
 private:
     void do_accept() {
+        std::cout << "[Server] Waiting for new connections..." << std::endl;
         acceptor_.async_accept(
             [this](boost::system::error_code ec, tcp::socket socket) {
                 if (!ec) {
-                    std::cout << "New connection from: " << socket.remote_endpoint() << std::endl;
+                    std::cout << "[Server] New connection established from: " << socket.remote_endpoint() << std::endl;
                     std::make_shared<Session>(std::move(socket))->start();
                 } else {
-                    std::cerr << "Accept error: " << ec.message() << std::endl;
+                    std::cerr << "[Server] Accept error: " << ec.message() << std::endl;
                 }
                 do_accept();
             });
@@ -70,18 +75,23 @@ private:
 
 int main(int argc, char* argv[]) {
     try {
-        if (argc != 2) {
-            std::cerr << "Usagaaaaaaaae: server <port>\n";
+        short port = 1234; // Default port
+        if (argc == 2) {
+            port = std::atoi(argv[1]);
+        } else if (argc > 2) {
+            std::cerr << "[Server] Usage: server [port]\n";
             return 1;
         }
 
+        std::cout << "[Server] Starting server on port: " << port << std::endl;
         boost::asio::io_context io_context;
 
-        Server server(io_context, std::atoi(argv[1]));
+        Server server(io_context, port);
 
+        std::cout << "[Server] Server is running. Waiting for connections..." << std::endl;
         io_context.run();
     } catch (std::exception& e) {
-        std::cerr << "Exception: " << e.what() << "\n";
+        std::cerr << "[Server] Exception: " << e.what() << "\n";
     }
 
     return 0;

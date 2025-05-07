@@ -7,14 +7,23 @@
       },
     "configurePresets": [
         {
-            "name": "Win32",
+            "name": "win",
             "generator": "Visual Studio 17 2022",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "installDir": "${sourceDir}/out/install/${presetName}",
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "cl.exe",
                 "CMAKE_CXX_COMPILER": "cl.exe",
-                "CMAKE_BUILD_TYPE": "Debug"
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "type": "FILEPATH",
+                    "value": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake"
+                  },
+                "_WIN32_WINNT": "0x0601"
+            },
+            "environment": {
+                "CXXFLAGS": "-D_WIN32_WINNT=0x0601",
+                "CFLAGS": "-D_WIN32_WINNT=0x0601"
             },
             "architecture": {
                 "value": "x64",
@@ -28,7 +37,7 @@
         },
 
         {
-            "name": "Linux",
+            "name": "linux",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "installDir": "${sourceDir}/out/install/${presetName}",
@@ -48,15 +57,18 @@
             }
         }
     ],
-
     "buildPresets": [
         {
-          "name": "Win32",
-          "configurePreset": "Win32"
+            "name": "win",
+            "configurePreset": "win",
+            "configuration": "Debug",
+            "inheritConfigureEnvironment": true
         },
         {
-          "name": "Linux",
-          "configurePreset": "Linux"
+            "name": "linux",
+            "configurePreset": "linux",
+            "configuration": "Debug",
+            "inheritConfigureEnvironment": true
         }
-      ]
+    ]
 }

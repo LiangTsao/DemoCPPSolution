@@ -9,6 +9,11 @@ cmake_minimum_required (VERSION 3.20)
 #   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 # endif()
 
+#CMAKE_TOOLCHAIN_FILE通常在项目命令之前设置，因为它会影响整个项目的配置，包括编译器和查找路径
+# 在CMakeLists.txt的最顶部，调用project()之前，使用set命令来定义CMAKE_TOOLCHAIN_FILE
+# set(CMAKE_TOOLCHAIN_FILE "C:/vcpkg/scripts/buildsystems/vcpkg.cmake")
+
+
 project ("DemoSolution" LANGUAGES CXX)
 
 # 设置 C++ 标准
@@ -19,5 +24,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_subdirectory ("DemoProject")
 add_subdirectory ("FooProject")
 add_subdirectory ("BarProject")
+add_subdirectory ("boost_asio_server")
 add_subdirectory ("asio_server")
-add_subdirectory ("asio_client")
+add_subdirectory ("fmt_sample")
+

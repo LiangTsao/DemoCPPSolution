@@ -16,18 +16,17 @@
 
 
 cmake_minimum_required(VERSION 3.10)
-project(asio_server LANGUAGES CXX)
+project(boost_server LANGUAGES CXX)
 
 # 查找 Boost 的 filesystem 和 system 库
 # find_package(Boost  REQUIRED COMPONENTS filesystem system)
-find_package(asio CONFIG REQUIRED)
-  # 不指定 COMPONENTS   头文件-only的 Asio库
+find_package(Boost REQUIRED)  # 不指定 COMPONENTS   头文件-only的 Boost 库
 
-add_executable(asio_server asio_server.cpp)
+add_executable(boost_server boost_server.cpp)
 
-# set(asio_INCLUDE_DIRS "/path/to/asio/include")
-# set(asio_LIBRARY_DIRS "/path/to/asio/lib")
+# 链接 Boost 库（Modern CMake 目标模式）
+target_include_directories(boost_server PRIVATE ${Boost_INCLUDE_DIRS})
 
-target_include_directories(asio_server PRIVATE ${asio_INCLUDE_DIRS})
+target_link_libraries(boost_server PRIVATE Boost::boost)
 
-target_link_libraries(asio_server PRIVATE asio::asio)    
+# target_link_libraries(server PRIVATE Boost::filesystem Boost::system)

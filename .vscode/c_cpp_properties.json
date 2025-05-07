@@ -4,8 +4,7 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "F:/asio-1.30.2/include/**",
-                "F:/boost_1_88_0/**"
+                "C:/vcpkg/installed/x64-windows/include/**"
             ],
             "defines": [
                 "_DEBUG",
