@@ -31,3 +31,14 @@ add_executable(asio_server asio_server.cpp)
 target_include_directories(asio_server PRIVATE ${asio_INCLUDE_DIRS})
 
 target_link_libraries(asio_server PRIVATE asio::asio)    
+
+
+  # # this is heuristically generated, and may not be correct                                             
+  # find_package(asio CONFIG REQUIRED)                                                                    
+  # target_link_libraries(main PRIVATE asio::asio) 
+
+  # asio provides CMake targets:                                                                            
+                                                                                                        
+  # # this is heuristically generated, and may not be correct                                             
+  # find_package(asio CONFIG REQUIRED)                                                                    
+  # target_link_libraries(main PRIVATE asio::asio)  
