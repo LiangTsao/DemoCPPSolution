@@ -3,5 +3,8 @@
     "cmake.configureOnEdit": false,
     "cmake.configureOnOpen": false,
     "cmake.deleteBuildDirOnCleanConfigure": true,
-    "cmake.automaticReconfigure": false
+    "cmake.automaticReconfigure": false,
+    "files.associations": {
+        "iomanip": "cpp"
+    }
 }
