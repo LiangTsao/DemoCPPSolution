@@ -27,4 +27,5 @@ add_subdirectory ("BarProject")
 add_subdirectory ("boost_asio_server")
 add_subdirectory ("asio_server")
 add_subdirectory ("fmt_sample")
+add_subdirectory ("boost_test")
 
